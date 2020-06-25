@@ -14,7 +14,7 @@ pipeline {
       stage('Preparation') {
          steps {
             cleanWs()
-            git credentialsId: 'GitHub', url: "https://github.com/dileepdwi10/Kubernetes.git"
+            git credentialsId: 'GitHub', url: "https://github.com/dileepdwi10/SonarQube.git"
          }
       }
 
