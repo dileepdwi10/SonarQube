@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarq
+spec:
+  selector:
+    matchLabels:
+      app: sonarq
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: sonarq
+    spec:
+      containers:
+      - name: sonarq
+        image: sonarqube
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auto-sonarq
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: sonarq
+
+  ports:
+    - name: http
+      port: 80
+      nodePort: 9000
+
+  type: NodePort
