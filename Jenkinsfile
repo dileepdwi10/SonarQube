@@ -20,7 +20,8 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
-            sh '${WORKSPACE}/deploy.yml | chmod 777 ${WORKSPACE}/deploy.yml | kubectl apply -f -'
+            sh 'chmod 777 ${WORKSPACE}/deploy.yml'
+            sh '${WORKSPACE}/deploy.yml | kubectl apply -f -'
           }
       }
    }
