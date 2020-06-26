@@ -20,7 +20,7 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
-            sh 'envsubst < ${WORKSPACE}/deploy.yml | kubectl apply -f -'
+            sh '${WORKSPACE}/deploy.yml | kubectl apply -f -'
           }
       }
    }
