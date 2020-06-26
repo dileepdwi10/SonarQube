@@ -21,7 +21,7 @@ pipeline {
       stage('Deploy to Cluster') {
           steps {
             sh 'chmod 777 ${WORKSPACE}/deploy.yml'
-            sh 'kubectl delete -f ${WORKSPACE}/deploy.yml'
+            sh 'kubectl apply -f ${WORKSPACE}/deploy.yml'
           }
       }
    }
